@@ -916,10 +916,7 @@ In[20]:     %%prun
      ....
 ```
 ---
-## 24: Use sys.getsizeof to guide data struction optimization (_Yibi_)
 
-<<<<<<< HEAD
-=======
 You can get the same output for a full script by running with `-m cProfile`:
 
 ```bash
@@ -930,7 +927,7 @@ python -m cProfile myscript.py
 
 ## 24: Use sys.getsizeof to guide data struction optimization (_Yibi_)
 
->>>>>>> 043a9977270a41777ae0fe7ea443369cb0430b1a
+
 ## Sample infomation,different datatype -> different size 
 ```python
 >>> a=["a","b"]
@@ -940,15 +937,12 @@ python -m cProfile myscript.py
 >>> sys.getsizeof(b)
 51
 ```
-<<<<<<< HEAD
+
 ---
-## Guide optimization
-Say we need to store 4-mers of DNA sequences
-=======
 
 ## Guide optimization
 Say we need to store 4-mers of DNA sequenes
->>>>>>> 043a9977270a41777ae0fe7ea443369cb0430b1a
+
 ```python
 >>> def motif_to_binary(motif):
 ...     base_to_binary = {"A": 0b00, "T": 0b01, "C": 0b10, "G": 0b11}
@@ -969,9 +963,6 @@ Say we need to store 4-mers of DNA sequenes
 >>> sys.getsizeof(binary_motif_int8)
 25
 ```
-<<<<<<< HEAD
-Using binary representation saves about 50% of memory!
-=======
 
 Using binary representation saves about 50% of memory!
 
@@ -1047,6 +1038,5 @@ def main():
                 exec_function(func['name'], func['flag'], func['timeout'])
 ```
 
->>>>>>> 043a9977270a41777ae0fe7ea443369cb0430b1a
 
 ---
