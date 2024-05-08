@@ -670,7 +670,12 @@ def monte_carlo_pi_calculation(nsamples):
 - Identifies horizontally transferred biogeochemical genes with mobile genetic elements found on the same contig
 - Output file: the BGCs, along with the MGE and corresponding MAG
 - The relative abundance of the BGC gene, MGE e-value and the sequences for both the BGC gene and MGE in the contig
-![Bio_HGT](https://github.com/BigDataBiology/talk-tips-n-tricks-large-python/assets/124160719/886853d3-2e38-45c4-b908-49706cbf4f9b)
+
+---
+## 18: BioG-HGT pipeline - BioGeochemical Horizontal Gene Transfer pipeline (_JP_)
+<div style="text-align: center;">
+<img src="https://github.com/BigDataBiology/talk-tips-n-tricks-large-python/assets/124160719/886853d3-2e38-45c4-b908-49706cbf4f9b" alt="Bio_HGT" width="80%" />
+</div>
 
 ---
 
@@ -913,6 +918,19 @@ In[20]:     %%prun
 ---
 ## 24: Use sys.getsizeof to guide data struction optimization (_Yibi_)
 
+<<<<<<< HEAD
+=======
+You can get the same output for a full script by running with `-m cProfile`:
+
+```bash
+python -m cProfile myscript.py
+```
+
+---
+
+## 24: Use sys.getsizeof to guide data struction optimization (_Yibi_)
+
+>>>>>>> 043a9977270a41777ae0fe7ea443369cb0430b1a
 ## Sample infomation,different datatype -> different size 
 ```python
 >>> a=["a","b"]
@@ -922,9 +940,15 @@ In[20]:     %%prun
 >>> sys.getsizeof(b)
 51
 ```
+<<<<<<< HEAD
 ---
 ## Guide optimization
 Say we need to store 4-mers of DNA sequences
+=======
+
+## Guide optimization
+Say we need to store 4-mers of DNA sequenes
+>>>>>>> 043a9977270a41777ae0fe7ea443369cb0430b1a
 ```python
 >>> def motif_to_binary(motif):
 ...     base_to_binary = {"A": 0b00, "T": 0b01, "C": 0b10, "G": 0b11}
@@ -945,6 +969,84 @@ Say we need to store 4-mers of DNA sequences
 >>> sys.getsizeof(binary_motif_int8)
 25
 ```
+<<<<<<< HEAD
 Using binary representation saves about 50% of memory!
+=======
+
+Using binary representation saves about 50% of memory!
+
+---
+
+
+## 25: Use `Bio.SeqIO.write` to convert format (_Yiqian_)
+
+Use `Bio.SeqIO.write` to convert aligned files to PHYLIP, CLUSTAL, or other formats for downstream analysis
+```
+from Bio import SeqIO
+records = SeqIO.parse("test.aln", "fasta")
+count = SeqIO.write(records, "test.phylip", "phylip")
+```
+
+---
+
+## 26 Check if the function has finished running （_Chengkai_）
+
+- If you're going to run a lot of samples, let's first complete one process, then I'd like to string these programs together.
+
+```python
+# Check if the function has finished running
+def ngless():
+	os.system(cmd)
+def semibin2():    
+	os.system(cmd)
+def eggnog():
+	os.system(cmd)
+		
+def exec_function(name, flag='', timeout=60):
+        eval(name)()
+        last_mtime = None
+        has_flag = False
+        if not flag:   # determine whether the target file of the previous program exists
+                return
+        for i in range(timeout):
+                if os.path.exists(flag):
+                        has_flag = True
+                        mtime = os.path.getmtime(flag)
+                        if last_mtime == mtime:
+                                break
+                        else:
+                                last_mtime = mtime     # Whether this file is consistent within 10 seconds before and after.
+                                time.sleep(10)
+                else:
+                        time.sleep(1)
+        if not has_flag:
+                print("Error: function [%s] failed!"%name)
+                exit(-1)
+
+def main():
+        functions = [
+                {
+                        'name': 'ngless',
+                        'flag': outdir+"01ngless/"+sample+".json",
+                        'timeout': 36000,
+                },
+                {
+                        'name': 'semibin2',
+                        'flag': outdir+"02semibin2/"+sample+"_bin.fa",
+                        'timeout': 36000
+                },
+		{
+			'name':'eggnog',
+			'flag':outdir+"03eggnog/"+sample+"_eggnog.txt",
+			'timeout': 36000
+
+		},
+        ]
+
+        for func in functions:
+                exec_function(func['name'], func['flag'], func['timeout'])
+```
+
+>>>>>>> 043a9977270a41777ae0fe7ea443369cb0430b1a
 
 ---
