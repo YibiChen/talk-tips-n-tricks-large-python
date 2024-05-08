@@ -922,9 +922,9 @@ In[20]:     %%prun
 >>> sys.getsizeof(b)
 51
 ```
-
+---
 ## Guide optimization
-Say we need to store 4-mers of DNA sequenes
+Say we need to store 4-mers of DNA sequences
 ```python
 >>> def motif_to_binary(motif):
 ...     base_to_binary = {"A": 0b00, "T": 0b01, "C": 0b10, "G": 0b11}
@@ -947,4 +947,4 @@ Say we need to store 4-mers of DNA sequenes
 ```
 Using binary representation saves about 50% of memory!
 
-___
+---
